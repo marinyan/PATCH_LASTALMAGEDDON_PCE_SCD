@@ -24,7 +24,7 @@ PCエンジン SUPER CD-ROM²版『ラストハルマゲドン』Rev 6用の非�
 
 | 項目 | 値 |
 |---|---|
-| タイトル | `Last Armageddon (Japan) (Rev 6)` |
+| タイトル | `Last Armageddon` |
 | BINサイズ | `483310128` bytes |
 | BIN SHA-256 | `8b14e639a446e342700ad19ef2b0619260cd7a998ce2720639ecdf8272e51de1` |
 | BIN CRC32 | `c97c196b` |
