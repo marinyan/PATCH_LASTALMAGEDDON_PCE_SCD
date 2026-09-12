@@ -1,0 +1,15 @@
+# Do not commit game, disc, save, or emulator-state data.
+*.bin
+*.chd
+*.cue
+*.img
+*.iso
+*.wav
+*.srm
+*.sav
+*.state
+*.state[0-9]*
+*.state.png
+
+# Local verification output.
+verify-output/
