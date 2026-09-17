@@ -24,6 +24,12 @@ IIボタンの「ひこう」「ちゃくち」でフィールドを再読込み
 
 短い音切れは残りますが、ゲーム内で飛行／着地の往復、戦闘後、魔界復帰後、曲終端付近の再生を確認しました。この修正は下記の**統合版**だけに含まれます。
 
+### アンドロスフィンクス第2合体のグラフィックと性能が入れ替わる問題
+
+第1合体でオークを選んだアンドロスフィンクスについて、第2合体相手のID表でゴーレムとスケルトンの順番が逆になっていました。性能は選択した相手ID、グラフィックは表内位置から算出した最終形態IDで決まるため、レリゴリムとケルゴーアのグラフィックと性能が入れ替わっていました。
+
+相手ID表を正しい順へ修正し、ゴーレムとの合体をレリゴリム、スケルトンとの合体をケルゴーアへ対応させます。この修正は下記の**最新版統合版**だけに含まれます。
+
 ## 対応イメージ
 
 パッチ対象は、次のRedump準拠raw BINです。CHDへ直接適用するものではありません。
@@ -39,7 +45,20 @@ IIボタンの「ひこう」「ちゃくち」でフィールドを再読込み
 
 ## パッチ
 
-### 統合版（塔・起動メニュー・フィールド曲、v10）
+### 最新版統合版（塔・起動メニュー・フィールド曲・A.スフィンクス）
+
+[`patches/Last Armageddon (Japan) (Rev 6) [reload + continue default + bgm resume v10 + andro sphinx fusion fix].bps`](<patches/Last Armageddon (Japan) (Rev 6) [reload + continue default + bgm resume v10 + andro sphinx fusion fix].bps>)
+
+| 項目 | 値 |
+|---|---|
+| BPSサイズ | `1507` bytes |
+| BPS SHA-256 | `510cbbcbe355686190b0acbc29d2bb09f95140e87133ad2df5ab3fd1e141e576` |
+| 適用後BIN SHA-256 | `fd8e15090fff05afdc5d8103c5bb46b415aa41249267c824266ecb6a3c619aa1` |
+| 適用後BIN CRC32 | `359cabf2` |
+
+このBPSは対応する**元のRev 6 raw BIN**に単独で適用してください。下記の旧版を先に適用したBINへ重ねるものではありません。
+
+### 旧統合版（塔・起動メニュー・フィールド曲、v10）
 
 [`patches/Last Armageddon (Japan) (Rev 6) [reload + continue default + bgm resume v10].bps`](<patches/Last Armageddon (Japan) (Rev 6) [reload + continue default + bgm resume v10].bps>)
 
@@ -50,7 +69,7 @@ IIボタンの「ひこう」「ちゃくち」でフィールドを再読込み
 | 適用後BIN SHA-256 | `13205f1af92871a841cc8d41e25623e539cc48d890431451a1f254ca78eadeef` |
 | 適用後BIN CRC32 | `0b3143c7` |
 
-このBPSは対応する**元のRev 6 raw BIN**に単独で適用してください。下記の従来版を先に適用したBINへ重ねるものではありません。
+このBPSも対応する**元のRev 6 raw BIN**に単独で適用してください。
 
 ### 従来版（塔・起動メニューのみ）
 
@@ -73,7 +92,7 @@ flips --apply --exact patch.bps original.bin patched.bin
 
 GUI版Floating IPSでは「Apply Patch」を選択し、BPSファイル、対応する元BIN、出力先の順に指定します。
 
-適用後のraw BINサイズはどちらも元と同じ`483310128` bytesです。使用した版に応じて、上記の適用後SHA-256を確認してください。
+適用後のraw BINサイズはいずれも元と同じ`483310128` bytesです。使用した版に応じて、上記の適用後SHA-256を確認してください。
 
 ### CHDから適用する場合
 
@@ -96,10 +115,9 @@ chdman verify -i patched.chd
 
 ## 検証
 
-- 統合版BPSを対応元BINへ再適用し、生成物がv10修正版BINのSHA-256と完全一致することを確認済み。
-- v10修正版BINから作成したCHDで、`chdman verify` のRaw SHA-1／Overall SHA-1検証に成功。
-- v10 CHDを再展開したBINが、BPSの適用結果とSHA-256で完全一致することを確認済み。
-- 元イメージとの差分は8つのMode 1物理セクタのみ。変更セクタすべてのEDC/P/Q ECC整合を確認済み。
+- 最新版統合BPSを対応元BINへ再適用し、生成物が修正版BINのSHA-256と完全一致することを確認済み。
+- 最新版修正BINから作成したCHDで、`chdman verify` のRaw SHA-1／Overall SHA-1検証に成功。
+- 元イメージとの差分は12のMode 1物理セクタのみ。変更セクタすべてのEDC/P/Q ECC整合を確認済み。
 
 詳細は[技術資料](docs/TECHNICAL.md)を参照してください。
 
